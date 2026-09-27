@@ -1,0 +1,97 @@
+@startuml ProteinFit_Class_Diagram
+title Диаграмма классов ProteinFit (MVC)
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam class {
+  BackgroundColor<<C>> White
+  BackgroundColor<<I>> White
+}
+hide empty members
+
+class ProteinFitApplication <<C>> {
+  + {static} main(args: String[]): void
+}
+
+class MainFrame <<C>> {
+  - model: ProteinModel
+  - enterDataButton: StyledButton
+  - lastWeight: DataRow
+  - lastHeight: DataRow
+  - lastGender: DataRow
+  - lastGoal: DataRow
+  - lastProtein: DataRow
+  - resultWeight: DataRow
+  - resultHeight: DataRow
+  - resultGender: DataRow
+  - resultGoal: DataRow
+  - resultProtein: DataRow
+  --
+  + onEnterData(listener: ActionListener): void
+  + modelChanged(updatedModel: ProteinModel): void
+}
+
+class ProteinController <<C>> {
+  - model: ProteinModel
+  - mainFrame: MainFrame
+  --
+  - openInputDialog(): void
+}
+
+class ProteinModel <<C>> {
+  - weight: Double
+  - height: Double
+  - heightUnit: HeightUnit
+  - gender: Gender
+  - goal: ActivityGoal
+  - unit: WeightUnit
+  - minProteinGrams: Double
+  - maxProteinGrams: Double
+  - lastError: String
+  - listeners: List<ModelListener>
+  --
+  + addListener(listener: ModelListener): void
+  + removeListener(listener: ModelListener): void
+  + applyInput(...): boolean
+  + hasResult(): boolean
+  + getWeight(): Double
+  + getHeight(): Double
+  + getGender(): Gender
+  + getGoal(): ActivityGoal
+  + getUnit(): WeightUnit
+  + getMinProteinGrams(): Double
+  + getMaxProteinGrams(): Double
+  + getLastError(): String
+  + formatDailyProtein(): String
+  - notifyListeners(): void
+  - parsePositive(text: String, fieldName: String): Double
+}
+
+class InputDialog <<C>> {
+  - weightField: JTextField
+  - weightUnitCombo: JComboBox
+  - heightField: JTextField
+  - heightUnitCombo: JComboBox
+  - genderCombo: JComboBox
+  - goalCombo: JComboBox
+  --
+  + showDialog(): Optional<InputData>
+}
+
+interface ModelListener <<I>> {
+  + modelChanged(model: ProteinModel): void
+}
+
+ProteinFitApplication ..> MainFrame : creates
+ProteinFitApplication ..> ProteinController : creates
+ProteinFitApplication ..> ProteinModel : creates
+
+MainFrame --> ProteinController : requests input
+MainFrame --> ProteinModel : reads state
+MainFrame ..|> ModelListener : implements
+
+ProteinController --> ProteinModel : updates
+ProteinController --> InputDialog : manages
+
+ProteinModel o--> ModelListener : notifies
+
+@enduml

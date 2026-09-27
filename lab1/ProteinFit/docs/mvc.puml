@@ -1,0 +1,33 @@
+@startuml ProteinFit_MVC
+title Диаграмма MVC приложения ProteinFit
+skinparam shadowing false
+skinparam packageStyle rectangle
+
+actor User
+
+package "View" {
+  [MainFrame]
+  [InputDialog]
+  [ErrorDialog]
+}
+
+package "Controller" {
+  [ProteinController]
+}
+
+package "Model" {
+  [ProteinModel]
+  interface ModelListener
+}
+
+User --> [MainFrame] : «Ввести данные»
+[MainFrame] --> [ProteinController] : событие кнопки
+[ProteinController] --> [InputDialog] : показать диалог
+[InputDialog] --> [ProteinController] : InputData
+[ProteinController] --> [ProteinModel] : applyInput(...)
+[ProteinModel] --> ModelListener : notifyListeners()
+[MainFrame] ..|> ModelListener
+[ProteinModel] --> [MainFrame] : modelChanged(...)
+[ProteinController] --> [ErrorDialog] : при ошибке ввода
+
+@enduml
