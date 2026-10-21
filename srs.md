@@ -647,23 +647,23 @@
 
 **Матрица верификации:**
 
-| ID Требования| Метод проверки| Что проверяем (Сценарий)        | Ссылка на тест-артефакт | Статус        | Доказательство |
-| :----------- | :--- ---------| :------------------------------ | :---------------------- | :------------ | :------------- |
-| REQ-INT-001  | Demonstration | Главная: каталог + карта        | tests/ui_dashboard.md   | Запланировано |                |
-| REQ-INT-002  | Demonstration | Карточка места                  | tests/ui_place.md       | Запланировано |                |
-| REQ-INT-009  | Demonstration | Маркеры на карте                | tests/map.md            | Запланировано |                |
-| REQ-FUNC-001 | Test          | Фильтрация / пустой результат   | tests/catalog_filter.md | Запланировано |                |
-| REQ-FUNC-003 | Test          | Сохранение маршрута             | tests/route_save.md     | Запланировано |                |
-| REQ-FUNC-005 | Test          | Добавление в избранное          | tests/favorites.md      | Запланировано |                |
-| REQ-FUNC-006 | Test          | Вход с неверным паролем         | tests/auth.md           | Запланировано |                |
-| REQ-PERF-001 | Test          | Загрузка страницы < 3 с         | tests/load_time.md      | Запланировано |                |
-| REQ-SEC-001  | Inspection    | Пароль в виде хеша              | –                       | Запланировано |                |
-| REQ-SEC-002  | Test          | Запрос без токена → 401         | tests/api_no_token.md   | Запланировано |                |
-| REQ-SEC-005  | Test          | Изменение чужого маршрута → 403 | tests/access_control.md | Запланировано |                |
-| REQ-REL-001  | Test          | Недоступность API карт          | tests/api_fail.md       | Запланировано |                |
-| REQ-COMP-001 | Inspection    | Галочка согласия с политикой    | –                       | Запланировано |                |
-| REQ-INST-001 | Demonstration | `docker-compose up`             | docker-compose.yml      | Запланировано |                |        
-| REQ-MAINT-004| Inspection    | Наличие PR и веток в Git        | –                       | Запланировано |                |
+| ID Требования | Метод проверки | Что проверяем (Сценарий) | Ссылка на тест-артефакт | Статус | Доказательство |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| REQ-INT-001 | Demonstration | Главная: каталог + карта | tests/ui_dashboard.md | Запланировано | |
+| REQ-INT-002 | Demonstration | Карточка места | tests/ui_place.md | Запланировано | |
+| REQ-INT-009 | Demonstration | Маркеры на карте | tests/map.md | Запланировано | |
+| REQ-FUNC-001 | Test | Фильтрация / пустой результат | tests/catalog_filter.md | Запланировано | |
+| REQ-FUNC-003 | Test | Сохранение маршрута | tests/route_save.md | Запланировано | |
+| REQ-FUNC-005 | Test | Добавление в избранное | tests/favorites.md | Запланировано | |
+| REQ-FUNC-006 | Test | Вход с неверным паролем | tests/auth.md | Запланировано | |
+| REQ-PERF-001 | Test | Загрузка страницы < 3 с | tests/load_time.md | Запланировано | |
+| REQ-SEC-001 | Inspection | Пароль в виде хеша | – | Запланировано | |
+| REQ-SEC-002 | Test | Запрос без токена → 401 | tests/api_no_token.md | Запланировано | |
+| REQ-SEC-005 | Test | Изменение чужого маршрута → 403 | tests/access_control.md | Запланировано | |
+| REQ-REL-001 | Test | Недоступность API карт | tests/api_fail.md | Запланировано | |
+| REQ-COMP-001 | Inspection | Галочка согласия с политикой | – | Запланировано | |
+| REQ-INST-001 | Demonstration | `docker-compose up` | docker-compose.yml | Запланировано | |
+| REQ-MAINT-004 | Inspection | Наличие PR и веток в Git | – | Запланировано | |
 
 *Примечание: В матрицу включены ключевые требования. Остальные проверяются в рамках общего тестирования.*
 
